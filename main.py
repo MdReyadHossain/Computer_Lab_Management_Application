@@ -1,33 +1,10 @@
 import json
 import time
 from lab import Lab
+from pc import PC
 
-file = "TotalLab.json"
 with open('TotalLab.json') as file_obj:
     data = json.load(file_obj)
-
-
-def lab_choice():
-    print("1. Access a lab.")
-    print("2. Add a lab.")
-    print("3. Delete a lab.")
-    print("4. Quit")
-
-    choice = input(f"Enter your choice: ")
-    if choice == '1':
-        lab_access_choice()
-
-    elif choice == '2':
-        add_lab_choice()
-
-    elif choice == '3':
-        add_lab_choice()
-
-    elif choice == '4':
-        return 4
-
-    else:
-        print("Invalid choice. Please try again.")
 
 
 def lab_access_choice():
@@ -40,25 +17,59 @@ def lab_access_choice():
         elif nth_lab == 0:
             lab_choice()
         else:
-            print("Entered wrong choice! Try again")
+            print("No lab found! Try again")
             lab_access_choice()
     except:
         print("Entered wrong choice! Try again")
         lab_access_choice()
 
 
-def add_lab_choice():
-    a = 0
 
 
 def delete_lab_choice():
-    a = 0
+    print("*Enter 0 to go back\n->Which lab do you want to Delete: ")
+    try:
+        nth_lab = int(input())
+        if 0 < nth_lab <= data['total_lab']:
+            labs = Lab(nth_lab)
+            labs.delete_lab()
+        elif nth_lab == 0:
+            lab_choice()
+        else:
+            print("No lab found! Try again")
+            lab_access_choice()
+    except:
+        print("Entered wrong choice! Try again")
+        lab_access_choice()
+
+
+def lab_choice():
+    print(f"Total Lab in the institute: {data['total_lab']}")
+    print("1. Access a lab.")
+    print("2. Add a lab.")
+    print("3. Delete a lab.")
+    print("4. Quit")
+
+    choice = input(f"Enter your choice: ")
+    if choice == '1':
+        lab_access_choice()
+
+    elif choice == '2':
+        labs = Lab(0)
+        labs.add_lab()
+
+    elif choice == '3':
+        delete_lab_choice()
+
+    elif choice == '4':
+        return 4
+
+    else:
+        print("Invalid choice. Please try again.")
 
 
 def main():
     print("Welcome to Computer Lab Management Application")
-
-    print(f"Total Lab in the institute: {data['total_lab']}")
 
     while True:
         valid = lab_choice()

@@ -1,0 +1,12 @@
+[
+  {
+    "pc_num" : 1,
+    "os" : "Windows 10",
+    "status": "Perfect."
+  },
+  {
+    "pc_num" : 2,
+    "os" : "Windows 7",
+    "status": "Monitor not working!"
+  }
+]

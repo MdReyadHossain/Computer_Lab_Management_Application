@@ -1,5 +1,6 @@
 import json
 import os
+
 from pc import PC
 
 with open('TotalLab.json') as file_obj:
@@ -22,7 +23,7 @@ class Lab:
                 print("\tPC Status:", i['status'], end="\n\n")
 
         # Access PC  --------
-            nth_pc = int(input("Which PC do you want to access(Enter 'p' to add a PC): "))
+            nth_pc = int(input("Which PC do you want to access(Press 0 to go back): "))
             if 0 < nth_pc <= len(data):
                 pcs = PC(nth_pc, self.lab_num)
                 pcs.access_pc()
@@ -49,6 +50,9 @@ class Lab:
                 else:
                     print("Invalid choice entered!")
                     self.access_lab()
+
+            elif nth_pc == 0:
+                pass
 
             else:
                 print("Invalid PC number entered!")
@@ -80,20 +84,3 @@ class Lab:
         total_lab['total_lab'] = total_lab['total_lab'] - 1
         with open('TotalLab.json', 'w') as file:
             json.dump(total_lab, file)
-
-    def add_pc(self):
-        with open(f"./Labs/Lab{self.lab_num}.json") as file:
-            data = json.load(file)
-
-        pc_num = int(input("Enter PC number: "))
-        pc_os = input("Enter installed OS: ")
-        pc_status = input("Enter status: ")
-
-        data.append({
-            "pc_num": pc_num,
-            "os": pc_os,
-            "status": pc_status
-        })
-
-        with open(f"./Labs/Lab{self.lab_num}.json", "w") as file_update:
-            json.dump(data, file_update)

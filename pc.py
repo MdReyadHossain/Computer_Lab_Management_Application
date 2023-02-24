@@ -9,12 +9,28 @@ class PC:
         self.pc_status = None
 
     def add_pc(self):
+        is_lab = False
         with open(f"./Labs/Lab{self.lab_num}.json") as file:
             data = json.load(file)
 
-        self.pc_num = int(input("Enter PC number: "))
-        self.pc_os = input("Enter installed OS: ")
-        self.pc_status = input("Enter status: ")
+        try:
+            while True:
+                self.pc_num = int(input("Enter PC number: "))
+                for i in data:
+                    if i['pc_num'] == self.pc_num:
+                        is_lab = True
+
+                if not is_lab:
+                    break
+                elif is_lab:
+                    print("Lab already exist!")
+                    is_lab = False
+
+            self.pc_os = input("Enter installed OS: ")
+            self.pc_status = input("Enter status: ")
+        except:
+            print("Invalid Input!")
+            self.add_pc()
 
         data.append({
             "pc_num": self.pc_num,

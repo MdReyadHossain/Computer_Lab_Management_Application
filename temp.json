@@ -1,0 +1,29 @@
+[
+    {
+    "f1": [
+            {
+                "lab1": {
+                    "pcno": 1,
+                    "os": "linux"
+                },
+                "lab2": {
+                    "pcno": 2,
+                    "os": "linux"
+                }
+            }
+        ],
+
+    "f2": [
+            {
+                "lab2": {
+                    "pcno": 1,
+                    "os": "linux"
+                },
+                "lab3": {
+                    "pcno": 2,
+                    "os": "linux"
+                }
+            }
+        ]
+    }
+]

@@ -8,7 +8,7 @@ with open('TotalLab.json') as file_obj:
 
 
 def lab_access_choice():
-    print("*Enter 0 to go back\n->Which lab do you want to access: ")
+    print("\n*Enter 0 to go back\n->Which lab do you want to access: ")
     try:
         nth_lab = int(input())
         if 0 < nth_lab <= data['total_lab']:
@@ -39,7 +39,7 @@ def lab_access_choice():
 
 
 def delete_lab_choice():
-    print("*Enter 0 to go back\n->Which lab do you want to Delete: ")
+    print("\n*Enter 0 to go back\n->Which lab do you want to Delete: ")
     try:
         nth_lab = int(input())
         if 0 < nth_lab <= data['total_lab']:

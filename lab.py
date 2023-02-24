@@ -39,6 +39,7 @@ class Lab:
                 elif choice == '2':
                     pc_stat = input(f"Update status for this PC: ")
                     pcs.update_pc(choice, pc_stat)
+                    print("PC information updated!")
 
                 elif choice == '3':
                     pcs.delete_pc()

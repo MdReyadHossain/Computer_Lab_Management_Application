@@ -23,7 +23,7 @@ class PC:
                 if not is_lab:
                     break
                 elif is_lab:
-                    print("Lab already exist!")
+                    print("PC already exist!")
                     is_lab = False
 
             self.pc_os = input("Enter installed OS: ")
@@ -58,7 +58,7 @@ class PC:
             data = json.load(file)
 
             for i in data:
-                if i['pc_num'] == self.lab_num:
+                if i['pc_num'] == self.pc_num:
                     if choice == '1':
                         i['os'] = self.pc_os
                         with open(f"./Labs/Lab{self.lab_num}.json", "w") as file_update:

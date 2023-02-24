@@ -9,21 +9,22 @@ with open('TotalLab.json') as file_obj:
 
 def lab_access_choice():
     print("*Enter 0 to go back\n->Which lab do you want to access: ")
-    try:
-        nth_lab = int(input())
-        if 0 < nth_lab <= data['total_lab']:
-            labs = Lab(nth_lab)
-            labs.access_lab()
-        elif nth_lab == 0:
-            lab_choice()
-        else:
-            print("No lab found! Try again")
-            lab_access_choice()
-    except:
-        print("Entered wrong choice! Try again")
+    # try:
+    nth_lab = int(input())
+    if 0 < nth_lab <= data['total_lab']:
+        labs = Lab(nth_lab)
+        pcs = PC(0, nth_lab)
+        print("1. Update PC status.")
+        print("3. Delete the PC.")
+        labs.access_lab()
+    elif nth_lab == 0:
+        lab_choice()
+    else:
+        print("No lab found! Try again")
         lab_access_choice()
-
-
+    # except:
+    #     print("Entered wrong choice! Try again")
+    #     lab_access_choice()
 
 
 def delete_lab_choice():

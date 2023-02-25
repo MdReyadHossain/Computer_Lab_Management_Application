@@ -3,60 +3,73 @@ import time
 from lab import Lab
 from pc import PC
 
-with open('TotalLab.json') as file_obj:
+with open('./Labs/Lab.json') as file_obj:
     data = json.load(file_obj)
 
 
 def lab_access_choice():
-    print("\n*Enter 0 to go back\n->Which lab do you want to access: ")
+    is_valid = False
     try:
-        nth_lab = int(input())
-        if 0 < nth_lab <= data['total_lab']:
-            labs = Lab(nth_lab)
-            pcs = PC(0, nth_lab)
-            print("1. Add a PC to this lab.")
-            print("2. Access this lab.")
-            choice = input("Enter your choice: ")
-            if choice == '1':
-                pcs.add_pc()
-                print("\nPC Added Successfully!\n")
+        while True:
+            nth_lab = (input("\n<-Enter 0 to go back.\nWhich lab do you want to access: "))
+            if nth_lab == "0":
+                lab_choice()
+            for i in data:
+                if i == nth_lab:
+                    labs = Lab(nth_lab)
+                    pcs = PC(0, nth_lab)
+                    print("1. Add a PC to this lab.")
+                    print("2. Access this lab.")
+                    choice = input("Enter your choice: ")
 
-            elif choice == '2':
-                labs.access_lab()
+                    # --------- Adding a PC ---------
+                    if choice == '1':
+                        pcs.add_pc()
+                        print("\nPC Added Successfully!\n")
 
+                    # --------- Access a Lab ---------
+                    elif choice == '2':
+                        labs.access_lab()
+
+                    else:
+                        print("Invalid Input!")
+                        lab_access_choice()
+                    is_valid = True
+                    break
+
+            if is_valid:
+                break
             else:
-                print("Invalid Input!")
-                lab_access_choice()
-
-        elif nth_lab == 0:
-            lab_choice()
-        else:
-            print("No lab found! Try again")
-            lab_access_choice()
+                print("\nLab does not exist!\n")
+                is_valid = False
     except:
         print("Entered wrong choice! Try again")
         lab_access_choice()
 
 
 def delete_lab_choice():
-    print("\n*Enter 0 to go back\n->Which lab do you want to Delete: ")
+    is_valid = False
     try:
-        nth_lab = int(input())
-        if 0 < nth_lab <= data['total_lab']:
-            labs = Lab(nth_lab)
-            labs.delete_lab()
-        elif nth_lab == 0:
-            lab_choice()
-        else:
-            print("No lab found! Try again")
-            lab_access_choice()
+        while True:
+            nth_lab = (input("\n<-Enter 0 to go back.\nWhich lab do you want to DELETE: "))
+            for i in data:
+                if i == nth_lab:
+                    labs = Lab(nth_lab)
+                    labs.delete_lab()
+                    is_valid = True
+                    break
+            if is_valid:
+                break
+            else:
+                print("\nLab does not exist!\n")
+                is_valid = False
     except:
         print("Entered wrong choice! Try again")
         lab_access_choice()
 
 
 def lab_choice():
-    print(f"\nTotal Lab in the institute: {data['total_lab']}")
+    print(f"Total Lab in the institute: {len(data)}\n")
     print("1. Access a lab.")
     print("2. Add a lab.")
     print("3. Delete a lab.")

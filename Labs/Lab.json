@@ -1,0 +1,41 @@
+{
+  "1": [
+    {
+      "pc_num": 1,
+      "os": "Windows 11",
+      "status": "Monitor not working"
+    },
+    {
+      "pc_num": 3,
+      "os": "Ubuntu Linux",
+      "status": "Perfect"
+    }
+  ],
+  "2": [
+    {
+      "pc_num": 1,
+      "os": "Windows 10",
+      "status": "Keyboard not working"
+    },
+    {
+      "pc_num": 2,
+      "os": "Windows 7",
+      "status": "No internet"
+    },
+    {
+      "pc_num": 3,
+      "os": "Windows 11",
+      "status": "Perfect"
+    },
+    {
+      "pc_num": 4,
+      "os": "Windows XP",
+      "status": "Not turning on"
+    },
+    {
+      "pc_num": 6,
+      "os": "Windows 10",
+      "status": "Perfect"
+    }
+  ]
+}

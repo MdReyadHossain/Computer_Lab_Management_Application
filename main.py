@@ -3,14 +3,13 @@ import time
 from lab import Lab
 from pc import PC
 
-with open('./Labs/Lab.json') as file_obj:
-    data = json.load(file_obj)
-
 
 def lab_access_choice():
     is_valid = False
     try:
         while True:
+            with open('./Labs/Lab.json') as file_obj:
+                data = json.load(file_obj)
             nth_lab = (input("\n<-Enter 0 to go back.\nWhich lab do you want to access: "))
             if nth_lab == "0":
                 lab_choice()
@@ -51,6 +50,8 @@ def delete_lab_choice():
     is_valid = False
     try:
         while True:
+            with open('./Labs/Lab.json') as file_obj:
+                data = json.load(file_obj)
             nth_lab = (input("\n<-Enter 0 to go back.\nWhich lab do you want to DELETE: "))
             for i in data:
                 if i == nth_lab:
@@ -69,8 +70,19 @@ def delete_lab_choice():
 
 
 def lab_choice():
+    with open('./Labs/Lab.json') as file_obj:
+        data = json.load(file_obj)
     print(f"Total Lab in the institute: {len(data)}\n")
-    print("1. Access a lab.")
+
+    if len(data) > 0:
+        print("Existing Labs:\n\t-> ", end="")
+        for i in data:
+            print(f"Lab-{i} | ", end="")
+    else:
+        print("No lab registered yet.")
+
+    print("\n")
+    print("\n1. Access a lab.")
     print("2. Add a lab.")
     print("3. Delete a lab.")
     print("4. Quit")

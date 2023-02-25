@@ -3,8 +3,8 @@ import os
 
 from pc import PC
 
-with open('TotalLab.json') as file_obj:
-    total_lab = json.load(file_obj)
+# with open('TotalLab.json') as file_obj:
+#     total_lab = json.load(file_obj)
 
 
 class Lab:
